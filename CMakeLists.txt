@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(calcEngine)
+project(processWatcher)
 #C++ compiler options
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
@@ -13,22 +13,22 @@ if(MSVC)
 endif()
 
 # include CalculationEngine library
-set(CALCULATIONENGINE_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/CalculationEngine)
-add_subdirectory(CalculationEngine)
+set(ProcessWatchEngine_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ProcessWatchEngine)
+add_subdirectory(ProcessWatchEngine)
 
-include_directories(${CALCULATIONENGINE_INCLUDE_DIR}/include)
+include_directories(${ProcessWatchEngine_INCLUDE_DIR}/include)
 
 #However, the file(GLOB...) allows for wildcard additions:
 file(GLOB SOURCES "src/*.cpp")
 
 add_executable(${CMAKE_PROJECT_NAME}_run ${SOURCES})
 
-target_link_libraries(${CMAKE_PROJECT_NAME}_run CalculationEngine)
+target_link_libraries(${CMAKE_PROJECT_NAME}_run ProcessWatchEngine)
 if (UNIX)
     target_link_libraries(${CMAKE_PROJECT_NAME}_run -lprocps)
 endif (UNIX)
 
-ADD_DEPENDENCIES(${CMAKE_PROJECT_NAME}_run CalculationEngine)
+ADD_DEPENDENCIES(${CMAKE_PROJECT_NAME}_run ProcessWatchEngine)
 add_subdirectory(tests)
 
 # Doxygen Build
