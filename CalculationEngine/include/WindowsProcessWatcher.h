@@ -54,16 +54,16 @@ struct PEB_INTERNAL
 * \brief WindowsProcessWatcher Class
 */
 
-class WindowsProcessWatcher : public ProcessWatcher  {
+class WindowsProcessWatcher : public ProcessWatcher {
 public:
     //! A constructor.
-	WindowsProcessWatcher();
+    WindowsProcessWatcher();
 
-	//! A virtual member.
-	/*!
-	 \brief This function returns string in JSON format for all running exes on windows platform, paths to exe, to the console.
-	*/
-	virtual std::wstring currentProcesses();
+    //! A virtual member.
+    /*!
+     \brief This function returns string in JSON format for all running exes on windows platform, paths to exe, to the console.
+    */
+    virtual std::wstring currentProcesses();
 private:
-	void populateProcesses();
+    void populateProcesses();
 };
